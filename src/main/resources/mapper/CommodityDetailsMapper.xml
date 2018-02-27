@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dealsky.dnf.dao.CommodityDetailsMapper" >
+  <resultMap id="BaseResultMap" type="com.dealsky.dnf.pojo.CommodityDetails" >
+    <id column="CmdDtNumber" property="cmddtnumber" jdbcType="INTEGER" />
+    <result column="CmdNumber" property="cmdnumber" jdbcType="INTEGER" />
+    <result column="CmdDtPrice" property="cmddtprice" jdbcType="INTEGER" />
+    <result column="CmdDtStatus" property="cmddtstatus" jdbcType="INTEGER" />
+    <result column="CmdDtTime" property="cmddttime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CmdDtNumber, CmdNumber, CmdDtPrice, CmdDtStatus, CmdDtTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from commoditydetails
+    where CmdDtNumber = #{cmddtnumber,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByCmdNumber" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    SELECT * FROM commoditydetails WHERE CmdNumber = #{cmdNumber}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from commoditydetails
+    where CmdDtNumber = #{cmddtnumber,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dealsky.dnf.pojo.CommodityDetails" >
+    insert into commoditydetails (CmdDtNumber, CmdNumber, CmdDtPrice, 
+      CmdDtStatus, CmdDtTime)
+    values (#{cmddtnumber,jdbcType=INTEGER}, #{cmdnumber,jdbcType=INTEGER}, #{cmddtprice,jdbcType=INTEGER}, 
+      #{cmddtstatus,jdbcType=INTEGER}, #{cmddttime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dealsky.dnf.pojo.CommodityDetails" >
+    insert into commoditydetails
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cmddtnumber != null" >
+        CmdDtNumber,
+      </if>
+      <if test="cmdnumber != null" >
+        CmdNumber,
+      </if>
+      <if test="cmddtprice != null" >
+        CmdDtPrice,
+      </if>
+      <if test="cmddtstatus != null" >
+        CmdDtStatus,
+      </if>
+      <if test="cmddttime != null" >
+        CmdDtTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cmddtnumber != null" >
+        #{cmddtnumber,jdbcType=INTEGER},
+      </if>
+      <if test="cmdnumber != null" >
+        #{cmdnumber,jdbcType=INTEGER},
+      </if>
+      <if test="cmddtprice != null" >
+        #{cmddtprice,jdbcType=INTEGER},
+      </if>
+      <if test="cmddtstatus != null" >
+        #{cmddtstatus,jdbcType=INTEGER},
+      </if>
+      <if test="cmddttime != null" >
+        #{cmddttime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dealsky.dnf.pojo.CommodityDetails" >
+    update commoditydetails
+    <set >
+      <if test="cmdnumber != null" >
+        CmdNumber = #{cmdnumber,jdbcType=INTEGER},
+      </if>
+      <if test="cmddtprice != null" >
+        CmdDtPrice = #{cmddtprice,jdbcType=INTEGER},
+      </if>
+      <if test="cmddtstatus != null" >
+        CmdDtStatus = #{cmddtstatus,jdbcType=INTEGER},
+      </if>
+      <if test="cmddttime != null" >
+        CmdDtTime = #{cmddttime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where CmdDtNumber = #{cmddtnumber,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dealsky.dnf.pojo.CommodityDetails" >
+    update commoditydetails
+    set CmdNumber = #{cmdnumber,jdbcType=INTEGER},
+      CmdDtPrice = #{cmddtprice,jdbcType=INTEGER},
+      CmdDtStatus = #{cmddtstatus,jdbcType=INTEGER},
+      CmdDtTime = #{cmddttime,jdbcType=TIMESTAMP}
+    where CmdDtNumber = #{cmddtnumber,jdbcType=INTEGER}
+  </update>
+</mapper>

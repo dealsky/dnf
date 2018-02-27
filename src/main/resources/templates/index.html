@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: head"></head>
+<body>
+
+    <nav class="navbar navbar-default" th:include="layout :: nav"></nav>
+
+    <div class="container">
+
+        <div id="toolbar">
+
+            <div class="btn-group">
+                <button class="btn btn-default" id="add-button">
+                    <i class="fa fa-plus fa-lg"></i> 新增
+                </button>
+            </div>
+
+        </div>
+
+        <table id="itemTable" data-toolbar="#toolbar"></table>
+
+    </div>
+    <footer class="footer" th:include="layout :: footer"></footer>
+</body>
+<div th:replace="layout :: script"></div>
+<script src="/pig/js/table.js"></script>
+</html>
