@@ -76,6 +76,7 @@ public class DetailsController {
             Commodity commodity = new Commodity();
             commodity.setCmdnumber(cmdId);
             commodity.setCmdprice(cmdPrice);
+            commodity.setCmdtime(commodityDetails.getCmddttime());
             commodityService.updateByPrimaryKey(commodity);
             return "ok";
         } else {
