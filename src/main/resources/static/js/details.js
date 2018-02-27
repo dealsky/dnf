@@ -52,10 +52,12 @@ function createChart(cmdNumber) {
 
                 var ctx = $("#lineChart").get(0).getContext("2d");
 
-                var labels = [];
+                var labels = [], tipLabels = [];
                 for (var i in data.info) {
-                    var str = moment(data.info[i].cmdDtTime).format("YYYY-MM-DD HH:mm:ss");
+                    var str = moment(data.info[i].cmdDtTime).format("MM-DD");
                     labels.push(str);
+                    str = moment(data.info[i].cmdDtTime).format("YYYY-MM-DD HH:mm:ss");
+                    tipLabels.push(str);
                 }
 
                 var theData = [];
@@ -79,9 +81,16 @@ function createChart(cmdNumber) {
                             xAxes: [{
                                 display: true
                             }]
+                        },
+                        tooltips: {
+                            enabled: true,
+                            callbacks: {
+                                title: function(tooltipItem, data) {
+                                    return tipLabels[tooltipItem[0].index];
+                                }
+                            }
                         }
                     }
-
                 });
 
                 $("#priceDiv").show();

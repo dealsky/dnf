@@ -93,10 +93,12 @@ function creatTable() {
             title: "商品名称"
         }, {
             field: "cmdprice",
-            title: "商品价格"
+            title: "商品价格",
+            sortable: true
         }, {
             field: "cmdtime",
-            title: "创建时间",
+            title: "最近修改时间",
+            sortable: true,
             formatter: function (value) {
                 return moment(value).format("YYYY-MM-DD HH:mm:ss");
             }
@@ -113,7 +115,8 @@ function creatTable() {
         search: true,
         showRefresh: true,
         sortable: true,
-        sortOrder: "asc",
+        sortName: "cmdtime",
+        sortOrder: "desc",
         pageNumber: 1,
         pageSize: 10,
         sidePagination: 'client',

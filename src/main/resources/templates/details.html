@@ -5,15 +5,17 @@
 
     <nav class="navbar navbar-default" th:include="layout :: nav"></nav>
 
-    <div class="container">
-        <div class="left" style="width: 80%; height: 75%">
-            <canvas id="lineChart"></canvas>
-        </div>
-        <div class="left" id="priceDiv" style="margin-left: 2%; display: none">
-            <h3>添加数据</h3>
-            <label for="cmdPrice">价格</label>
-            <p><input class="form-control" id="cmdPrice" name="cmdPrice" type="number" min="0" /></p>
-            <button class="btn btn-default" id="priceBtn" type="button">添加</button>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-9">
+                <canvas id="lineChart"></canvas>
+            </div>
+            <div class="col-md-2" id="priceDiv" style="margin-left: 2%; display: none">
+                <h3>添加数据</h3>
+                <label for="cmdPrice">价格</label>
+                <p><input class="form-control" id="cmdPrice" name="cmdPrice" type="number" min="0" /></p>
+                <button class="btn btn-default" id="priceBtn" type="button">添加</button>
+            </div>
         </div>
     </div>
 

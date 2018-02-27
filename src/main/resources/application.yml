@@ -6,7 +6,7 @@ spring:
   datasource:
     name: dnf
     url: jdbc:mysql://127.0.0.1:3306/dnf
-    username: dealsky
+    username: root
     password: Dealsky168!
     # 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
