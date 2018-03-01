@@ -38,7 +38,7 @@ public interface CommodityService {
 
     /**
      * 根据主键更新商品
-     * @param primaryKey
+     * @param commodity
      * @return 成功: 1, 失败: 0
      */
     int updateByPrimaryKey(Commodity commodity);

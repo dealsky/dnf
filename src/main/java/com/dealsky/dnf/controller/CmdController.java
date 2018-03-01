@@ -76,4 +76,26 @@ public class CmdController {
 
     }
 
+    @RequestMapping(value = "/list", method = RequestMethod.PUT)
+    public @ResponseBody String updateCommodityName(Integer cmdNumber, String cmdName) {
+
+        if (!commodityService.judgeCmdName(cmdName)) {
+            return "name";
+        }
+
+        Commodity commodity = new Commodity();
+        commodity.setCmdnumber(cmdNumber);
+        commodity.setCmdname(cmdName);
+        int ans = commodityService.updateByPrimaryKey(commodity);
+        if (ans == 1) {
+            return "ok";
+        } else {
+            return "error";
+        }
+
+    }
+
+    //@RequestMapping(value = "/list", method = RequestMethod.DELETE)
+
+
 }
