@@ -28,4 +28,9 @@ public class CommodityDetailsServiceImpl implements CommodityDetailsService{
         return commodityDetailsMapper.selectByCmdNumber(cmdNumber);
     }
 
+
+    @Override
+    public int updateByPrimaryKey(CommodityDetails commodityDetails) {
+        return 0;
+    }
 }

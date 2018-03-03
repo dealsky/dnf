@@ -24,4 +24,11 @@ public interface CommodityDetailsService {
      */
     List<CommodityDetails> selectByCmdNumber(Integer cmdNumber);
 
+    /**
+     * 根据主键更新
+     * @param commodityDetails
+     * @return
+     */
+    int updateByPrimaryKey(CommodityDetails commodityDetails);
+
 }

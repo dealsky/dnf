@@ -42,7 +42,7 @@ public class CmdController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public @ResponseBody List<Commodity> listCommodity() {
 
-        return commodityService.listCommodity();
+        return commodityService.listCommodityLegal();
 
     }
 
@@ -95,7 +95,23 @@ public class CmdController {
 
     }
 
-    //@RequestMapping(value = "/list", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/list", method = RequestMethod.DELETE)
+    public @ResponseBody String deleteCommodity(Integer cmdNumber) {
+
+        Commodity commodity = new Commodity();
+        commodity.setCmdnumber(cmdNumber);
+        commodity.setCmdstatus(1);
+
+        int ans = commodityService.updateByPrimaryKey(commodity);
+
+        if (ans == 1) {
+
+            return "ok";
+        } else {
+            return "error";
+        }
+
+    }
 
 
 }

@@ -226,8 +226,26 @@ function deleteItem() {
         },
         function(){
 
-
-            swal("删除！", arr[0].cmdname + "已经被删除。", "success");
+            $.ajax({
+                url: "/pig/index/list",
+                type: "post",
+                data: {
+                    _method: "delete",
+                    cmdNumber: arr[0].cmdnumber
+                },
+                success: function (data) {
+                    if (data === "ok") {
+                        swal("删除！", arr[0].cmdname + "已经被删除。", "success");
+                        destroyTable();
+                        creatTable();
+                    } else {
+                        swal("失败", "未知错误", "error");
+                    }
+                },
+                error: function () {
+                    console.log("ajax error!");
+                }
+            });
 
         });
 

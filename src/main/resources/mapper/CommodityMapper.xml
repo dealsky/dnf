@@ -27,11 +27,15 @@
   </select>
 
   <select id="listCommodity" resultMap="BaseResultMap">
-      select * from commodity
+    select * from commodity
   </select>
 
   <select id="selectByCmdName" resultMap="BaseResultMap" parameterType="java.lang.String">
-      select * from commodity where cmdname = #{cmdName}
+    select * from commodity where cmdname = #{cmdName}
+  </select>
+
+  <select id="listCommodityLegal" resultMap="BaseResultMap">
+    select * from commodity where cmdstatus = 0
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >

@@ -26,4 +26,6 @@ public interface CommodityMapper {
 
     List<Commodity> selectByCmdName(String cmdName);
 
+    List<Commodity> listCommodityLegal();
+
 }

@@ -16,6 +16,12 @@ public interface CommodityService {
     List<Commodity> listCommodity();
 
     /**
+     * 返回所有未被删除的商品信息
+     * @return
+     */
+    List<Commodity> listCommodityLegal();
+
+    /**
      * 增加一条商品记录
      * @param commodity
      * @return 成功: 1, 失败: 0

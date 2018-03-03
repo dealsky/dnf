@@ -47,4 +47,8 @@ public class CommodityServiceImpl implements CommodityService {
         return commodityMapper.updateByPrimaryKeySelective(commodity);
     }
 
+    @Override
+    public List<Commodity> listCommodityLegal() {
+        return commodityMapper.listCommodityLegal();
+    }
 }

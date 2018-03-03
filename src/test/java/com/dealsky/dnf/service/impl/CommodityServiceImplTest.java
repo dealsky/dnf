@@ -37,4 +37,13 @@ public class CommodityServiceImplTest {
         boolean flag = commodityService.judgeCmdName("Cmd-Aa");
         System.out.println(flag);
     }
+
+    @Test
+    public void listCommodityLegal() {
+        List<Commodity> list = commodityService.listCommodityLegal();
+        for (Commodity commodity : list) {
+            System.out.println(commodity.getCmdname());
+        }
+    }
+
 }
