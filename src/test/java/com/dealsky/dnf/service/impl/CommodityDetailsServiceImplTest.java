@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
@@ -48,4 +49,31 @@ public class CommodityDetailsServiceImplTest {
             System.out.println(commodityDetails.getCmddtnumber());
         }
     }
+
+    @Test
+    public void updateByCmdNumber() {
+
+        CommodityDetails commodityDetails = new CommodityDetails();
+        commodityDetails.setCmdnumber(10001);
+        commodityDetails.setCmddtstatus(0);
+
+        int ans = commodityDetailsService.updateByCmdNumber(commodityDetails);
+
+        System.out.println(ans);
+
+    }
+
+    @Test
+    public void selectByCmdNumber2() {
+
+        List<CommodityDetails> list = commodityDetailsService.selectByCmdNumber(10001, 0);
+
+        System.out.println(list.size());
+
+        for (CommodityDetails commodityDetails : list) {
+            System.out.println(commodityDetails.getCmddtnumber());
+        }
+
+    }
+
 }

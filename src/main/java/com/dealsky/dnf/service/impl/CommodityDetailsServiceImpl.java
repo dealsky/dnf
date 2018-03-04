@@ -6,6 +6,7 @@ import com.dealsky.dnf.service.CommodityDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,9 +29,23 @@ public class CommodityDetailsServiceImpl implements CommodityDetailsService{
         return commodityDetailsMapper.selectByCmdNumber(cmdNumber);
     }
 
-
     @Override
     public int updateByPrimaryKey(CommodityDetails commodityDetails) {
-        return 0;
+        return commodityDetailsMapper.updateByPrimaryKeySelective(commodityDetails);
     }
+
+    @Override
+    public int updateByCmdNumber(CommodityDetails commodityDetails) {
+        return commodityDetailsMapper.updateByCmdNumberSelective(commodityDetails);
+    }
+
+    @Override
+    public List<CommodityDetails> selectByCmdNumber(Integer cmdNumber, int status) {
+        if (status == 1) {
+            return commodityDetailsMapper.selectByCmdNumberLegal(cmdNumber);
+        } else {
+            return new ArrayList<>();
+        }
+    }
+
 }

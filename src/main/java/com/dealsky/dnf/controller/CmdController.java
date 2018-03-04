@@ -105,7 +105,10 @@ public class CmdController {
         int ans = commodityService.updateByPrimaryKey(commodity);
 
         if (ans == 1) {
-
+            CommodityDetails commodityDetails = new CommodityDetails();
+            commodityDetails.setCmdnumber(cmdNumber);
+            commodityDetails.setCmddtstatus(1);
+            commodityDetailsService.updateByCmdNumber(commodityDetails);
             return "ok";
         } else {
             return "error";

@@ -25,10 +25,27 @@ public interface CommodityDetailsService {
     List<CommodityDetails> selectByCmdNumber(Integer cmdNumber);
 
     /**
+     * 高级查找
+     * @param cmdNumber
+     * @param status 1: 查找未删除商品信息
+     * @return
+     */
+    List<CommodityDetails> selectByCmdNumber(Integer cmdNumber, int status);
+
+    /**
      * 根据主键更新
      * @param commodityDetails
      * @return
      */
     int updateByPrimaryKey(CommodityDetails commodityDetails);
+
+    /**
+     * 根据商品编号更新
+     * @param commodityDetails
+     * @return
+     */
+    int updateByCmdNumber(CommodityDetails commodityDetails);
+
+
 
 }

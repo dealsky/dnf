@@ -38,7 +38,7 @@ public class DetailsController {
 
         Map<String, Object> returnMap = new HashMap<>(16);
 
-        List<CommodityDetails> commodityDetailsList = commodityDetailsService.selectByCmdNumber(cmdId);
+        List<CommodityDetails> commodityDetailsList = commodityDetailsService.selectByCmdNumber(cmdId, 1);
 
         if (commodityDetailsList.size() != 0) {
             returnMap.put("message", "ok");

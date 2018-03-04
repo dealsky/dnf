@@ -22,6 +22,10 @@
     SELECT * FROM commoditydetails WHERE CmdNumber = #{cmdNumber}
   </select>
   
+  <select id="selectByCmdNumberLegal" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select * from commoditydetails where CmdNumber = #{cmdNumber} and CmdDtStatus = 0
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from commoditydetails
     where CmdDtNumber = #{cmddtnumber,jdbcType=INTEGER}
@@ -86,6 +90,21 @@
       </if>
     </set>
     where CmdDtNumber = #{cmddtnumber,jdbcType=INTEGER}
+  </update>
+  <update id="updateByCmdNumberSelective" parameterType="com.dealsky.dnf.pojo.CommodityDetails">
+    update commoditydetails
+    <set>
+      <if test="cmddtprice != null">
+        CmdDtPrice = #{cmddtprice}
+      </if>
+      <if test="cmddtstatus != null">
+        CmdDtStatus = #{cmddtstatus}
+      </if>
+      <if test="cmddttime != null">
+        CmdDtTime = #{cmddttime}
+      </if>
+    </set>
+    where CmdNumber = #{cmdnumber}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.dealsky.dnf.pojo.CommodityDetails" >
     update commoditydetails

@@ -21,4 +21,9 @@ public interface CommodityDetailsMapper {
     int updateByPrimaryKey(CommodityDetails record);
 
     List<CommodityDetails> selectByCmdNumber(Integer cmdNumber);
+
+    int updateByCmdNumberSelective(CommodityDetails record);
+
+    List<CommodityDetails> selectByCmdNumberLegal(Integer cmdNumber);
+
 }
